@@ -15,7 +15,7 @@ public class Main {
         Map<String, Carta> mapa = FactoryMap.getMap(choice);
         CartaManager cartaManager = new CartaManager(mapa);
         try {
-            cartaManager.cargarCartasDesdeArchivo("Cartas.txt");
+            cartaManager.cargarCartasDesdeArchivo("C:\\Cartas.txt");
         } catch (IOException e) {
             System.out.println("Error al cargar las cartas desde el archivo.");
             return;
@@ -69,4 +69,3 @@ public class Main {
         }
     }
 }
-
