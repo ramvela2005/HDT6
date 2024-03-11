@@ -18,17 +18,20 @@ public class CartaManager {
     public void cargarCartasDesdeArchivo(String archivo) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String line;
+            int numLine = 1;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 if (parts.length == 2) {
                     String nombre = parts[0].trim();
                     String tipo = parts[1].trim();
+                    long initTime = System.nanoTime();
                     cartas.put(nombre, new CartaImpl(nombre, tipo));
+                    long finishTime = System.nanoTime();
+                    System.out.println(finishTime - initTime);
                 }
             }
         }
     }
-
     public void agregarCarta(String nombreCarta) {
         Carta carta = cartas.get(nombreCarta);
         if (carta != null) {
